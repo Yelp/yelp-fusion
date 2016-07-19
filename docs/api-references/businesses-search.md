@@ -25,7 +25,7 @@ These parameters should be in the query string.
 | offset | int | Optional. Offset the list of returned business results by this amount. |
 | sort_by | string | Optional. Sort the results by one of the these modes: best\_match, rating, review\_count or distance. By default it's best_match. The rating sort is not strictly sorted by the rating value, but by an adjusted rating value that takes into account the number of ratings, similar to a bayesian average. This is so a business with 1 rating of 5 stars doesn’t immediately jump to the top. |
 | pricing_filter | string | Optional. Pricing levels to filter the search result with: 1 = $, 2 = $$, 3 = $$$, 4 = $$$$. The pricing filter can be a list of comma delimited pricing levels. For example, "1, 2, 3" will filter the results to show the ones that are $, $$, or $$$. |
-| open\_now\_filter | boolean | Optional. Default to false. When set to true, only return the businesses opening now. |
+| open\_now\_filter | boolean | Optional. Default to false. When set to true, only return the businesses open now. |
 
 ## Response body
 
