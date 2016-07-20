@@ -23,6 +23,7 @@ None.
   "price": "$$$$",
   "rating": 4.5,
   "review_count": 4521,
+  "phone": "+14152520800",
   "photos": [
     "http://s3-media3.fl.yelpcdn.com/bphoto/--8oiPVp0AsjoWHqaY1rDQ/o.jpg",
     "http://s3-media2.fl.yelpcdn.com/bphoto/ybXbObsm7QGw3SGPA1_WXA/o.jpg",
@@ -110,6 +111,7 @@ None.
 | ``price`` | string | Price level of the business. Value is one of $, $$, $$$ and $$$. |
 | ``rating`` | decimal | Rating for this business (value ranges from 1, 1.5, ... 4.5, 5). |
 | ``review_count`` | int | Number of reviews for this business. |
+| ``phone`` | string | Phone number of the business. |
 | ``photos`` | string[] | URLs of up to three photos of the business. |
 | ``hours`` | object[] | Opening hours of the business. |
 | ``hours[x].is_open_now`` | boolean | Whether the business is currently open or not. |
