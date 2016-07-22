@@ -29,7 +29,7 @@ Yelp API v3 uses [OAuth2](http://oauth.net/2/) for authentication. Currently, on
 
 In order to set up your access to Yelp API v3, you need to create an app with Yelp. This app represents the application you'll build using our API and includes the credentials you'll need to gain access. Here are the steps for creating an app"
 
-1. Go to [Yelp developers site](https://www.yelp.com/developers/v3/preview) and click the **Register for Access** button.
+1. Go to [Yelp Developers site](https://www.yelp.com/developers/v3/preview) and click the **Register for Access** button.
 ![landing page](../media/landing-page.png)
 2. In the register for access form, enter information about your app accordingly, then agree to Yelp API Terms of Use and Display Requirements. Then click the **Submit** button.
 ![register for access form](../media/register-for-access-form.png)
