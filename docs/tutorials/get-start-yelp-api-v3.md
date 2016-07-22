@@ -1,10 +1,10 @@
 # Get started with Yelp API v3
 
-Yelp API v3 allows you to get best local business information and user reviews of over million businesses in 32 countries. This tutorial provides an overview of the capabilities Yelp API v3 provides, provides instructions of how to authenticate the API calls, and goes through a simple scenario using the API.
+Yelp's API v3 allows you to get the best local business information and user reviews of over million businesses in 32 countries. This tutorial provides an overview of the capabilities our new API offers, provides instructions of how to authenticate API calls, and walks through a simple scenario using the API.
 
 ## Endpoints
 
-All Yelp API v3 endpoints are under ``https://api.yelp.com/v3``. Following are the ones we provide right now. You can click the links for detailed documentations. You can also try it out by yourself using [Postman](https://www.getpostman.com/).
+All Yelp API v3 endpoints are under ``https://api.yelp.com/v3``. Below are v3's current endpoints. You can click the links for detailed documentation. You can also try it out by yourself using [Postman](https://www.getpostman.com/)!
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/a54dde1fd81323f2203e)
 
@@ -21,13 +21,13 @@ All Yelp API v3 endpoints are under ``https://api.yelp.com/v3``. Following are t
 
 Yelp API v3 uses [OAuth2](http://oauth.net/2/) for authentication. Currently, only [client credentials](https://tools.ietf.org/html/rfc6749#section-4.4) authorization grant flow is supported. To authenticate the call to an endpoint, there are 3 steps:
 
-1. Create an app with to obtain your client id and secret.
+1. Create an app to obtain your client id and secret.
 2. Use the client id and secret to get an access token.
 3. Authenticate API calls with the access token.
 
-### Create an app on Yelp developers site
+### Create an app on Yelp's Developers site
 
-In order to set up your access to Yelp API v3, you need to create an app with Yelp. This app represents the application you'll build using Yelp API, with the credentials you need to gain access. Following are the steps.
+In order to set up your access to Yelp API v3, you need to create an app with Yelp. This app represents the application you'll build using our API and includes the credentials you'll need to gain access. Here are the steps for creating an app"
 
 1. Go to [Yelp developers site](https://www.yelp.com/developers/v3/preview) and click the **Register for Access** button.
 ![landing page](../media/landing-page.png)
@@ -38,7 +38,7 @@ In order to set up your access to Yelp API v3, you need to create an app with Ye
 
 > **Note**
 > 
-> Please keep the client id and secret to yourself since they are credentials for your app to call Yelp API.
+> Please keep the client id and secret to yourself since they are credentials for your app to call Yelp's API.
 
 ### Get an access token
 
@@ -83,16 +83,16 @@ To authenticate API calls with the access token, set the ``Authorization`` HTTP 
 
 ## Use the API
 
-Let's use a simple scenario to demonstrate how to use Yelp API v3. Imaging you are building an app helping users find great food nearby and you want to provide a search experience.
+Let's use a simple scenario to demonstrate how to use Yelp's API v3. Imaging you are building an app helping users find great food nearby and you want to provide a search experience.
 
 1. A user enters "del" in the search box.
 2. She is provided by a few autocomplete suggestions, like "delivery" and "delis".
 3. She chooses "delis" to see what options she has nearby.
 4. Then she chooses "delivery" since she figured she doesn't want to go out to get the food.
-5. She is offered with all the restaurants which deliver to her location.
-6. She chooses one, view the restaurant details and reviews, then makes the decision to order some delivery.
+5. She is offered all of the restaurants which deliver to her location.
+6. She chooses one, views the restaurant details and reviews, then makes the decision to order delivery.
 
-Following is how to use Yelp API v3 to implement this experience.
+Following is how to use Yelp's API v3 to implement this experience.
 
 ### Get autocomplete suggestions based on user's input
 
