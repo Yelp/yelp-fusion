@@ -369,9 +369,9 @@ In the response body, you can get up to three reviews, including the excerpt, th
 ```
 ## What's next
 
-Now you've learned how to use Yelp API v3 to get the best local business information and user reviews. We cannot wait to see the awesome applications you'll build with it.
+Now you've learned how to use our new API to get the best local business information, user reviews, and more. We can't wait to see the awesome applications you'll build with it!
 
 - To provide feedback or report an issue, please go to https://github.com/Yelp/yelp-api-v3/issues.
 - To tell us about your apps and ideas, please email api@yelp.com.
-- Check out [FAQ](../others/faq.md).
+- Check out our [FAQ](../others/faq.md).
 
