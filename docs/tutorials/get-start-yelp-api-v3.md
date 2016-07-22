@@ -4,7 +4,7 @@ Yelp's API v3 allows you to get the best local business information and user rev
 
 ## Endpoints
 
-All Yelp API v3 endpoints are under ``https://api.yelp.com/v3``. Below are v3's current endpoints. You can click the links for detailed documentation. You can also try it out by yourself using [Postman](https://www.getpostman.com/)!
+All Yelp API v3 endpoints are under ``https://api.yelp.com/v3``. Below are v3's current endpoints. Click the links for detailed documentation. You can also try it out by yourself using [Postman](https://www.getpostman.com/)!
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/a54dde1fd81323f2203e)
 
