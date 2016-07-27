@@ -1,6 +1,6 @@
 # /businesses/search
 
-This endpoint returns a list of businesses based on the provided search criteria. It has some basic information about the business. To get detailed information and reviews, please use the business id returned here and refer to [/businesses/{id}](businesses-id.md) and [/businesses/{id}/reviews](businesses-id-reviews.md) endpoints.
+This endpoint returns up to 1000 businesses based on the provided search criteria. It has some basic information about the business. To get detailed information and reviews, please use the business id returned here and refer to [/businesses/{id}](businesses-id.md) and [/businesses/{id}/reviews](businesses-id-reviews.md) endpoints.
 
 ## Request
 
@@ -26,6 +26,10 @@ These parameters should be in the query string.
 | sort_by | string | Optional. Sort the results by one of the these modes: best\_match, rating, review\_count or distance. By default it's best_match. The rating sort is not strictly sorted by the rating value, but by an adjusted rating value that takes into account the number of ratings, similar to a bayesian average. This is so a business with 1 rating of 5 stars doesn’t immediately jump to the top. |
 | pricing_filter | string | Optional. Pricing levels to filter the search result with: 1 = $, 2 = $$, 3 = $$$, 4 = $$$$. The pricing filter can be a list of comma delimited pricing levels. For example, "1, 2, 3" will filter the results to show the ones that are $, $$, or $$$. |
 | open\_now\_filter | boolean | Optional. Default to false. When set to true, only return the businesses open now. |
+
+> Note
+> 
+> Using the ``offset`` and ``limit`` parameters, you can get up to 1000 businesses from this endpoint if there are more than 1000 results. If you request a page out of this 1000 business limit, this endpoint will return an error.
 
 ## Response body
 
@@ -69,7 +73,7 @@ These parameters should be in the query string.
 
 | Name | Type | Description |
 |:------|:------|:-------------|
-| ``total`` | int | The total number of business Yelp finds based on the search criteria. |
+| ``total`` | int | The total number of business Yelp finds based on the search criteria. Sometimes, the value may exceed 1000. In such case, you still can only get up to 1000 businesses. |
 | ``businesses`` | object[] | A list of business Yelp finds based on the search criteria. |
 | ``businesses[x].id`` | string | Yelp id of this business. |
 | ``businesses[x].name`` | string | Name of this business. |
