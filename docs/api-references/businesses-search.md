@@ -27,6 +27,7 @@ These parameters should be in the query string.
 | pricing_filter | string | Optional. Pricing levels to filter the search result with: 1 = $, 2 = $$, 3 = $$$, 4 = $$$$. The pricing filter can be a list of comma delimited pricing levels. For example, "1, 2, 3" will filter the results to show the ones that are $, $$, or $$$. |
 | open\_now\_filter | boolean | Optional. Default to false. When set to true, only return the businesses open now. Notice that open\_at and open\_now_\filter cannot be used together. |
 | open\_at | int | Optional. An integer represending the [Unix time](https://en.wikipedia.org/wiki/Unix_time) in the same timezone of the search location. If specified, it will return business open at the given time. Notice that open\_at and open\_now_\filter cannot be used together. |
+| attributes | string | Optional. Additional filters to search businesses. You can use multiple attribute filters at the same time by providing a comma separated string, like this "attribute1,attribute2". Currently, the valid values are ``hot_and_new`` and ``pokeshop``. |
 
 > Note
 > 
