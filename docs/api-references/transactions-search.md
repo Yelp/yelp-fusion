@@ -14,7 +14,7 @@ Valid values for ``transaction_type`` are:
 
 > **Note**
 >
-> Currently, this endpoint only supports food delivery in US.
+> Currently, this endpoint only supports food delivery in the US.
 
 
 ## Parameters
