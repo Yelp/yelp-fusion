@@ -63,8 +63,8 @@ These parameters should be in the query string.
 | ``businesses[x].name`` | string | Name of this business. |
 | ``businesses[x].image_url`` | string | URL of photo for this business. |
 | ``businesses[x].url`` | string | URL for business page on Yelp. |
-| ``price`` | string | Price level of the business. Value is one of $, $$, $$$ and $$$. |
-| ``phone`` | string | Phone number of the business. |
+| ``businesses[x].price`` | string | Price level of the business. Value is one of $, $$, $$$ and $$$. |
+| ``businesses[x].phone`` | string | Phone number of the business. |
 | ``businesses[x].rating`` | decimal | Rating for this business (value ranges from 1, 1.5, ... 4.5, 5). |
 | ``businesses[x].review_count`` | int | Number of reviews for this business. |
 | ``businesses[x].categories`` | object[] | A list of category title and alias pairs associated with this business. |
