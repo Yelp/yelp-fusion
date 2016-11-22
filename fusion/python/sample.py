@@ -16,13 +16,28 @@ This program requires the Python requests library, which you can install via:
 Sample usage of the program:
 `python sample.py --term="bars" --location="San Francisco, CA"`
 """
+from __future__ import print_function
+
 import argparse
 import json
 import pprint
 import requests
 import sys
 import urllib
-import urllib2
+
+
+# This client code can run on Python 2.x or 3.x.  Your imports can be
+# simpler if you only need one of those.
+try:
+    # For Python 3.0 and later
+    from urllib.error import HTTPError
+    from urllib.parse import quote
+    from urllib.parse import urlencode
+except ImportError:
+    # Fall back to Python 2's urllib2 and urllib
+    from urllib2 import HTTPError
+    from urllib import quote
+    from urllib import urlencode
 
 
 # OAuth credential placeholders that must be filled in by users.
@@ -45,13 +60,26 @@ SEARCH_LIMIT = 3
 
 
 def obtain_bearer_token(host, path):
-    url = 'https://{0}{1}'.format(host, urllib.quote(path.encode('utf8')))
+    """Given a bearer token, send a GET request to the API.
+
+    Args:
+        host (str): The domain host of the API.
+        path (str): The path of the API after the domain.
+        url_params (dict): An optional set of query parameters in the request.
+
+    Returns:
+        str: OAuth bearer token, obtained using client_id and client_secret.
+
+    Raises:
+        HTTPError: An error occurs from the HTTP request.
+    """
+    url = 'https://{0}{1}'.format(host, quote(path.encode('utf8')))
     assert CLIENT_ID, "Please supply your client_id."
     assert CLIENT_SECRET, "Please supply your client_secret."
-    data = urllib.urlencode({
-        'client_id' : CLIENT_ID,
+    data = urlencode({
+        'client_id': CLIENT_ID,
         'client_secret': CLIENT_SECRET,
-        'grant_type'  : GRANT_TYPE,
+        'grant_type': GRANT_TYPE,
     })
     headers = {
         'content-type': 'application/x-www-form-urlencoded',
@@ -74,15 +102,15 @@ def request(host, path, bearer_token, url_params=None):
         dict: The JSON response from the request.
 
     Raises:
-        urllib2.HTTPError: An error occurs from the HTTP request.
+        HTTPError: An error occurs from the HTTP request.
     """
     url_params = url_params or {}
-    url = 'https://{0}{1}'.format(host, urllib.quote(path.encode('utf8')))
+    url = 'https://{0}{1}'.format(host, quote(path.encode('utf8')))
     headers = {
         'Authorization': 'Bearer %s' % bearer_token,
     }
 
-    print u'Querying {0} ...'.format(url)
+    print(u'Querying {0} ...'.format(url))
 
     response = requests.request('GET', url, headers=headers, params=url_params)
 
@@ -136,17 +164,17 @@ def query_api(term, location):
     businesses = response.get('businesses')
 
     if not businesses:
-        print u'No businesses for {0} in {1} found.'.format(term, location)
+        print(u'No businesses for {0} in {1} found.'.format(term, location))
         return
 
     business_id = businesses[0]['id']
 
-    print u'{0} businesses found, querying business info ' \
+    print(u'{0} businesses found, querying business info ' \
         'for the top result "{1}" ...'.format(
-            len(businesses), business_id)
+            len(businesses), business_id))
     response = get_business(bearer_token, business_id)
 
-    print u'Result for business "{0}" found:'.format(business_id)
+    print(u'Result for business "{0}" found:'.format(business_id))
     pprint.pprint(response, indent=2)
 
 
@@ -163,10 +191,10 @@ def main():
 
     try:
         query_api(input_values.term, input_values.location)
-    except urllib2.HTTPError as error:
+    except HTTPError as error:
         sys.exit(
             'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
-                error.code, 
+                error.code,
                 error.url,
                 error.read(),
             )
