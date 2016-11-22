@@ -41,15 +41,17 @@ except ImportError:
 
 
 # OAuth credential placeholders that must be filled in by users.
+# You can find them on
+# https://www.yelp.com/developers/v3/manage_app
 CLIENT_ID = None
 CLIENT_SECRET = None
 
 
 # API constants, you shouldn't have to change these.
-API_HOST = 'api.yelp.com'
+API_HOST = 'https://api.yelp.com'
 SEARCH_PATH = '/v3/businesses/search'
-BUSINESS_PATH = '/v3/businesses/'
-TOKEN_PATH = '/oauth2/token'  # No trailing slash.
+BUSINESS_PATH = '/v3/businesses/'  # Business ID will come after slash.
+TOKEN_PATH = '/oauth2/token'
 GRANT_TYPE = 'client_credentials'
 
 
@@ -73,7 +75,7 @@ def obtain_bearer_token(host, path):
     Raises:
         HTTPError: An error occurs from the HTTP request.
     """
-    url = 'https://{0}{1}'.format(host, quote(path.encode('utf8')))
+    url = '{0}{1}'.format(host, quote(path.encode('utf8')))
     assert CLIENT_ID, "Please supply your client_id."
     assert CLIENT_SECRET, "Please supply your client_secret."
     data = urlencode({
@@ -105,7 +107,7 @@ def request(host, path, bearer_token, url_params=None):
         HTTPError: An error occurs from the HTTP request.
     """
     url_params = url_params or {}
-    url = 'https://{0}{1}'.format(host, quote(path.encode('utf8')))
+    url = '{0}{1}'.format(host, quote(path.encode('utf8')))
     headers = {
         'Authorization': 'Bearer %s' % bearer_token,
     }
