@@ -21,6 +21,18 @@ The new API will use OAuth 2.0 to for all requests as opposed to OAuth 1.0a. Weâ
 
 We hope that the new Yelp Fusion API has made it more powerful yet simpler for developers to use.
 
+## Clientlibs
+Client libraries are full-featured interface modules that handle much of the request and response handling for the Yelp Fusion API.
+
+### Official
+#### iOS
+The official iOS client library is [yelp-ios](https://github.com/Yelp/yelp-ios).
+
+## Code samples
+This Github repo includes several small code samples:
+* [Python](https://github.com/Yelp/yelp-fusion/tree/master/fusion/python)
+* [Ruby](https://github.com/Yelp/yelp-fusion/tree/master/fusion/ruby)
+
 ## Feedback
 
 If you have any feedback for us about Yelp Fusion (bugs, suggestions, etc), please create a [new issue](https://github.com/Yelp/yelp-fusion/issues/new) on this repo. We'll be monitoring and responding to issues opened up here.
