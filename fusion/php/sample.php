@@ -41,16 +41,14 @@ $SEARCH_LIMIT = 3;
 /**
  * Given a bearer token, send a GET request to the API.
  * 
- * @param    $host    The domain host of the API 
- * @param    $path    The path of the APi after the domain
  * @return   OAuth bearer token, obtained using client_id and client_secret.
  */
 
 function obtain_bearer_token() {
     try {
-        # Using the build-in cURL library for easiest installation.
+        # Using the built-in cURL library for easiest installation.
         # Extension library HttpRequest would also work here.
-		$curl = curl_init();
+        $curl = curl_init();
         if (FALSE === $ch)
             throw new Exception('Failed to initialize');
 
@@ -58,22 +56,22 @@ function obtain_bearer_token() {
             "&client_secret=" . $GLOBALS['CLIENT_SECRET'] .
             "&grant_type=" . $GLOBALS['GRANT_TYPE'];
 
-		curl_setopt_array($curl, array(
-		  CURLOPT_URL => $GLOBALS['API_HOST'] . $GLOBALS['TOKEN_PATH'],
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_ENCODING => "",
-		  CURLOPT_MAXREDIRS => 10,
-		  CURLOPT_TIMEOUT => 30,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => "POST",
-		  CURLOPT_POSTFIELDS => $postfields,
-		  CURLOPT_HTTPHEADER => array(
-			"cache-control: no-cache",
-			"content-type: application/x-www-form-urlencoded",
-		  ),
-		));
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $GLOBALS['API_HOST'] . $GLOBALS['TOKEN_PATH'],
+            CURLOPT_RETURNTRANSFER => true,  // Capture response.
+            CURLOPT_ENCODING => "",  // Accept gzip/deflate/whatever.
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => $postfields,
+            CURLOPT_HTTPHEADER => array(
+                "cache-control: no-cache",
+                "content-type: application/x-www-form-urlencoded",
+            ),
+        ));
 
-		$response = curl_exec($curl);
+        $response = curl_exec($curl);
 
         if (FALSE === $response)
             throw new Exception(curl_error($curl), curl_errno($curl));
@@ -90,7 +88,7 @@ function obtain_bearer_token() {
     }
 
     $body = json_decode($response);
-	$bearer_token = $body->access_token;
+    $bearer_token = $body->access_token;
     return $bearer_token;
 }
 
@@ -98,34 +96,35 @@ function obtain_bearer_token() {
 /** 
  * Makes a request to the Yelp API and returns the response
  * 
+ * @param    $bearer_token   API bearer token from obtain_bearer_token
  * @param    $host    The domain host of the API 
- * @param    $path    The path of the API after the domain, including query string
- * @param	 $bearer_token   API bearer token from obtain_bearer_token
+ * @param    $path    The path of the API after the domain.
+ * @param    $url_params    Array of query-string parameters.
  * @return   The JSON response from the request      
  */
 function request($bearer_token, $host, $path, $url_params = array()) {
     // Send Yelp API Call
     try {
-		$curl = curl_init();
+        $curl = curl_init();
         if (FALSE === $ch)
             throw new Exception('Failed to initialize');
 
         $url = $host . $path . "?" . http_build_query($url_params);
-		curl_setopt_array($curl, array(
-		  CURLOPT_URL => $url,
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_ENCODING => "",
-		  CURLOPT_MAXREDIRS => 10,
-		  CURLOPT_TIMEOUT => 30,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => "GET",
-		  CURLOPT_HTTPHEADER => array(
-			"authorization: Bearer " . $bearer_token,
-			"cache-control: no-cache",
-		  ),
-		));
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,  // Capture response.
+            CURLOPT_ENCODING => "",  // Accept gzip/deflate/whatever.
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "authorization: Bearer " . $bearer_token,
+                "cache-control: no-cache",
+            ),
+        ));
 
-		$response = curl_exec($curl);
+        $response = curl_exec($curl);
 
         if (FALSE === $response)
             throw new Exception(curl_error($curl), curl_errno($curl));
@@ -147,7 +146,7 @@ function request($bearer_token, $host, $path, $url_params = array()) {
 /**
  * Query the Search API by a search term and location 
  * 
- * @param	 $bearer_token   API bearer token from obtain_bearer_token
+ * @param    $bearer_token   API bearer token from obtain_bearer_token
  * @param    $term        The search term passed to the API 
  * @param    $location    The search location passed to the API 
  * @return   The JSON response from the request 
@@ -165,7 +164,7 @@ function search($bearer_token, $term, $location) {
 /**
  * Query the Business API by business_id
  * 
- * @param	 $bearer_token   API bearer token from obtain_bearer_token
+ * @param    $bearer_token   API bearer token from obtain_bearer_token
  * @param    $business_id    The ID of the business to query
  * @return   The JSON response from the request 
  */
@@ -182,7 +181,7 @@ function get_business($bearer_token, $business_id) {
  * @param    $location    The location of the business to query
  */
 function query_api($term, $location) {     
-	$bearer_token = obtain_bearer_token();
+    $bearer_token = obtain_bearer_token();
 
     $response = json_decode(search($bearer_token, $term, $location));
     $business_id = $response->businesses[0]->id;
