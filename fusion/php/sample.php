@@ -13,7 +13,7 @@
  * for the API documentation.
  * 
  * Sample usage of the program:
- * `php sample.php --term="bars" --location="San Francisco, CA"`
+ * `php sample.php --term="dinner" --location="San Francisco, CA"`
  */
 
 // OAuth credential placeholders that must be filled in by users.
@@ -21,6 +21,10 @@
 // https://www.yelp.com/developers/v3/manage_app
 $CLIENT_ID = NULL;
 $CLIENT_SECRET = NULL;
+
+// Complain if credentials haven't been filled out.
+assert($CLIENT_ID, "Please supply your client_id.");
+assert($CLIENT_SECRET, "Please supply your client_secret.");
 
 // API constants, you shouldn't have to change these.
 $API_HOST = "https://api.yelp.com";
@@ -43,36 +47,47 @@ $SEARCH_LIMIT = 3;
  */
 
 function obtain_bearer_token() {
-    assert($GLOBALS['CLIENT_ID'], "Please supply your client_id.");
-    assert($GLOBALS['CLIENT_SECRET'], "Please supply your client_secret.");
-	$curl = curl_init();
+    try {
+        # Using the build-in cURL library for easiest installation.
+        # Extension library HttpRequest would also work here.
+		$curl = curl_init();
+        if (FALSE === $ch)
+            throw new Exception('Failed to initialize');
 
-	curl_setopt_array($curl, array(
-	  CURLOPT_URL => $GLOBALS['API_HOST'] . $GLOBALS['TOKEN_PATH'],
-	  CURLOPT_RETURNTRANSFER => true,
-	  CURLOPT_ENCODING => "",
-	  CURLOPT_MAXREDIRS => 10,
-	  CURLOPT_TIMEOUT => 30,
-	  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-	  CURLOPT_CUSTOMREQUEST => "POST",
-	  CURLOPT_POSTFIELDS => "client_id=" . $GLOBALS['CLIENT_ID'] .
-		"&client_secret=" . $GLOBALS['CLIENT_SECRET'] .
-		"&grant_type=" . $GLOBALS['GRANT_TYPE'],
-	  CURLOPT_HTTPHEADER => array(
-		"cache-control: no-cache",
-		"content-type: application/x-www-form-urlencoded",
-	  ),
-	));
+        $postfields = "client_id=" . $GLOBALS['CLIENT_ID'] .
+            "&client_secret=" . $GLOBALS['CLIENT_SECRET'] .
+            "&grant_type=" . $GLOBALS['GRANT_TYPE'];
 
-	$response = curl_exec($curl);
-	$err = curl_error($curl);
+		curl_setopt_array($curl, array(
+		  CURLOPT_URL => $GLOBALS['API_HOST'] . $GLOBALS['TOKEN_PATH'],
+		  CURLOPT_RETURNTRANSFER => true,
+		  CURLOPT_ENCODING => "",
+		  CURLOPT_MAXREDIRS => 10,
+		  CURLOPT_TIMEOUT => 30,
+		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		  CURLOPT_CUSTOMREQUEST => "POST",
+		  CURLOPT_POSTFIELDS => $postfields,
+		  CURLOPT_HTTPHEADER => array(
+			"cache-control: no-cache",
+			"content-type: application/x-www-form-urlencoded",
+		  ),
+		));
 
-	curl_close($curl);
+		$response = curl_exec($curl);
 
-	# Print any errors, to help with debugging.
-	if ($err) {
-	  echo "cURL Error #:" . $err;
-	}
+        if (FALSE === $response)
+            throw new Exception(curl_error($curl), curl_errno($curl));
+        $http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        if (200 != $http_status)
+            throw new Exception($response, $http_status);
+
+        curl_close($curl);
+    } catch(Exception $e) {
+        trigger_error(sprintf(
+            'Curl failed with error #%d: %s',
+            $e->getCode(), $e->getMessage()),
+            E_USER_ERROR);
+    }
 
     $body = json_decode($response);
 	$bearer_token = $body->access_token;
@@ -88,15 +103,16 @@ function obtain_bearer_token() {
  * @param	 $bearer_token   API bearer token from obtain_bearer_token
  * @return   The JSON response from the request      
  */
-function request($host, $path, $bearer_token) {
+function request($bearer_token, $host, $path, $url_params = array()) {
     // Send Yelp API Call
     try {
 		$curl = curl_init();
         if (FALSE === $ch)
             throw new Exception('Failed to initialize');
 
+        $url = $host . $path . "?" . http_build_query($url_params);
 		curl_setopt_array($curl, array(
-		  CURLOPT_URL => $host . $path,
+		  CURLOPT_URL => $url,
 		  CURLOPT_RETURNTRANSFER => true,
 		  CURLOPT_ENCODING => "",
 		  CURLOPT_MAXREDIRS => 10,
@@ -110,11 +126,6 @@ function request($host, $path, $bearer_token) {
 		));
 
 		$response = curl_exec($curl);
-		$err = curl_error($curl);
-
-		if ($err) {
-		  echo "cURL Error #:" . $err;
-		}
 
         if (FALSE === $response)
             throw new Exception(curl_error($curl), curl_errno($curl));
@@ -129,7 +140,7 @@ function request($host, $path, $bearer_token) {
             $e->getCode(), $e->getMessage()),
             E_USER_ERROR);
     }
-    
+
     return $response;
 }
 
@@ -147,9 +158,8 @@ function search($bearer_token, $term, $location) {
     $url_params['term'] = $term;
     $url_params['location'] = $location;
     $url_params['limit'] = $GLOBALS['SEARCH_LIMIT'];
-    $search_path = $GLOBALS['SEARCH_PATH'] . "?" . http_build_query($url_params);
     
-    return request($GLOBALS['API_HOST'], $search_path, $bearer_token);
+    return request($bearer_token, $GLOBALS['API_HOST'], $GLOBALS['SEARCH_PATH'], $url_params);
 }
 
 /**
@@ -162,7 +172,7 @@ function search($bearer_token, $term, $location) {
 function get_business($bearer_token, $business_id) {
     $business_path = $GLOBALS['BUSINESS_PATH'] . urlencode($business_id);
     
-    return request($GLOBALS['API_HOST'], $business_path, $bearer_token);
+    return request($bearer_token, $GLOBALS['API_HOST'], $business_path);
 }
 
 /**
@@ -186,7 +196,8 @@ function query_api($term, $location) {
     $response = get_business($bearer_token, $business_id);
     
     print sprintf("Result for business \"%s\" found:\n", $business_id);
-    print "$response\n";
+    $pretty_response = json_encode(json_decode($response), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+    print "$pretty_response\n";
 }
 
 /**
