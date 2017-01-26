@@ -49,7 +49,7 @@ function obtain_bearer_token() {
         # Using the built-in cURL library for easiest installation.
         # Extension library HttpRequest would also work here.
         $curl = curl_init();
-        if (FALSE === $ch)
+        if (FALSE === $curl)
             throw new Exception('Failed to initialize');
 
         $postfields = "client_id=" . $GLOBALS['CLIENT_ID'] .
@@ -106,7 +106,7 @@ function request($bearer_token, $host, $path, $url_params = array()) {
     // Send Yelp API Call
     try {
         $curl = curl_init();
-        if (FALSE === $ch)
+        if (FALSE === $curl)
             throw new Exception('Failed to initialize');
 
         $url = $host . $path . "?" . http_build_query($url_params);
