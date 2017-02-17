@@ -39,6 +39,7 @@ This Github repo includes several small code samples:
 * [PHP](https://github.com/Yelp/yelp-fusion/tree/master/fusion/php)
 * [Python](https://github.com/Yelp/yelp-fusion/tree/master/fusion/python)
 * [Ruby](https://github.com/Yelp/yelp-fusion/tree/master/fusion/ruby)
+* [Java](https://github.com/Yelp/yelp-fusion/tree/master/fusion/java)
 
 ## Feedback
 
