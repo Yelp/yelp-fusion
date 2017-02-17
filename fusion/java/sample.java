@@ -5,7 +5,7 @@ import org.json.*;
 
 /**
  * Created by Junghyun Park on 2/16/17.
- * www.sean-park.github.io
+ * https://sean-park.github.io
  */
 
 // using AOuth 2.0 to access Yelp Fusion api
