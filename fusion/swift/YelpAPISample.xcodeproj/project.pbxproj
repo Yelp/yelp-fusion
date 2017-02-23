@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1373E1CB1E5EC51C00719900 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1373E1CA1E5EC51C00719900 /* main.swift */; };
+		1373E1D31E5EC7F300719900 /* YLPClient+Futures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1373E1D21E5EC7F300719900 /* YLPClient+Futures.swift */; };
 		51716A264DD4550D2CBA2ECE /* Pods_YelpAPISample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B5C743256F320EE642AEA1 /* Pods_YelpAPISample.framework */; };
 /* End PBXBuildFile section */
 
@@ -16,6 +17,7 @@
 		1373E1C71E5EC51C00719900 /* YelpAPISample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YelpAPISample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1373E1CA1E5EC51C00719900 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1373E1CC1E5EC51C00719900 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1373E1D21E5EC7F300719900 /* YLPClient+Futures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "YLPClient+Futures.swift"; sourceTree = "<group>"; };
 		18243F090C81DF3D86840796 /* Pods-YelpAPISample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpAPISample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YelpAPISample/Pods-YelpAPISample.debug.xcconfig"; sourceTree = "<group>"; };
 		F0B5C743256F320EE642AEA1 /* Pods_YelpAPISample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YelpAPISample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -54,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				1373E1CA1E5EC51C00719900 /* main.swift */,
+				1373E1D21E5EC7F300719900 /* YLPClient+Futures.swift */,
 				1373E1CC1E5EC51C00719900 /* Info.plist */,
 			);
 			path = YelpAPISample;
@@ -186,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1373E1CB1E5EC51C00719900 /* main.swift in Sources */,
+				1373E1D31E5EC7F300719900 /* YLPClient+Futures.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
