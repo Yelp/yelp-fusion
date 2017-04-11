@@ -3,11 +3,6 @@ import okhttp3.*;
 import okhttp3.Request.Builder;
 import org.json.*;
 
-/**
- * Created by Junghyun Park on 2/16/17.
- * https://sean-park.github.io
- */
-
 // using AOuth 2.0 to access Yelp Fusion api
 
 public class sample {
@@ -20,7 +15,7 @@ public class sample {
 
         OkHttpClient client = new OkHttpClient();
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
-        RequestBody body = RequestBody.create(mediaType, "client_id=NdVuXwgZodPj3IOKDHIblA&client_secret=tBf1HJybwlCMq9sQfdQjgl5SkqvCFiZQt1ZTerENg4oc6HTFJNg4cAH8TIegWxgE&grant_type=client_credentials");
+        RequestBody body = RequestBody.create(mediaType, "client_id=<YOUR_CLIENT_ID>&client_secret=<YOUR_CLIENT_SECRET>&grant_type=client_credentials");
         Request request = new Request.Builder()
                 .url("https://api.yelp.com/oauth2/token")
                 .post(body)
