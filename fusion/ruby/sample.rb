@@ -156,7 +156,7 @@ when "search"
   puts "Found #{response["total"]} businesses. Listing #{SEARCH_LIMIT}:"
   response["businesses"].each {|biz| puts biz["name"]}
 when "lookup"
-  business_id = options.fetch(:id, DEFAULT_BUSINESS_ID)
+  business_id = options.fetch(:business_id, DEFAULT_BUSINESS_ID)
 
 
   raise "term is not a valid parameter for lookup" if options.key?(:term)
