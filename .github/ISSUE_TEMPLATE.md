@@ -2,6 +2,7 @@
 - **Client ID:** _(e.g. lrVVpyP-aBRmP1I1KUqXkw)_
 - **Issue type:** _(eg. feature request, bug, question, etc)_
 - **Summary:** _(A few sentences describing the issue and what you're trying to do)_
+- **Platform:** _(Desktop/web, Android, iOS, etc)_
 
 ## Description
 _(More detailed information explaining the problem, the expected results, the question, etc.)_
