@@ -33,6 +33,9 @@ The official iOS client library is [yelp-ios](https://github.com/Yelp/yelp-ios).
 * [tonybadguy/yelp-fusion](https://github.com/tonybadguy/yelp-fusion)
 * [danieljin/yelpv3](https://github.com/danieljin/yelpv3)
 
+#### PHP
+* [stevenmaguire/yelp-php](https://github.com/stevenmaguire/yelp-php)
+
 ## Code samples
 This Github repo includes several small code samples:
 * [Node.js](https://github.com/Yelp/yelp-fusion/tree/master/fusion/node)
