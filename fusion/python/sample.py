@@ -16,6 +16,8 @@ This program requires the Python requests library, which you can install via:
 Sample usage of the program:
 `python sample.py --term="bars" --location="San Francisco, CA"`
 """
+
+
 from __future__ import print_function
 
 import argparse
@@ -24,6 +26,7 @@ import pprint
 import requests
 import sys
 import urllib
+import configparser
 
 
 # This client code can run on Python 2.x or 3.x.  Your imports can be
@@ -43,21 +46,23 @@ except ImportError:
 # OAuth credential placeholders that must be filled in by users.
 # You can find them on
 # https://www.yelp.com/developers/v3/manage_app
-CLIENT_ID = None
-CLIENT_SECRET = None
-
+config = configparser.RawConfigParser()
+config.read('API_Keys.cfg')
+CLIENT_ID = config.get('Yelp', 'CLIENT_ID')
+CLIENT_SECRET = config.get('Yelp', 'CLIENT_SECRET')
 
 # API constants, you shouldn't have to change these.
 API_HOST = 'https://api.yelp.com'
 SEARCH_PATH = '/v3/businesses/search'
 BUSINESS_PATH = '/v3/businesses/'  # Business ID will come after slash.
 TOKEN_PATH = '/oauth2/token'
+PHONE_PATH = '/v3/businesses/search/phone'
 GRANT_TYPE = 'client_credentials'
 
 
 # Defaults for our simple example.
-DEFAULT_TERM = 'dinner'
-DEFAULT_LOCATION = 'San Francisco, CA'
+DEFAULT_TERM = 'WELLER, CHANA'
+DEFAULT_LOCATION = '10024'
 SEARCH_LIMIT = 3
 
 
@@ -133,8 +138,10 @@ def search(bearer_token, term, location):
     url_params = {
         'term': term.replace(' ', '+'),
         'location': location.replace(' ', '+'),
-        'limit': SEARCH_LIMIT
+        'limit': SEARCH_LIMIT,
+        'radius': 3000
     }
+    
     return request(API_HOST, SEARCH_PATH, bearer_token, url_params=url_params)
 
 
@@ -174,10 +181,13 @@ def query_api(term, location):
     print(u'{0} businesses found, querying business info ' \
         'for the top result "{1}" ...'.format(
             len(businesses), business_id))
-    response = get_business(bearer_token, business_id)
+    out= []
+    print(type(out))
+    for i in range(len(businesses)):
+        out.append(get_business(bearer_token, businesses[i]['id']))
 
-    print(u'Result for business "{0}" found:'.format(business_id))
-    pprint.pprint(response, indent=2)
+        print('\033[93m' + u'Result for business "{0}" found:'.format(businesses[i]['id']) + '\033[0m')
+        pprint.pprint(out[i], indent=2)
 
 
 def main():
@@ -205,3 +215,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# Example:
+##query_api('Levingart Garry','New York, NY')
