@@ -40,19 +40,18 @@ except ImportError:
     from urllib import urlencode
 
 
-# OAuth credential placeholders that must be filled in by users.
-# You can find them on
+# Yelp Fusion no longer uses OAuth as of December 7, 2017.
+# You no longer need to provide Client ID to fetch Data
+# It now uses private keys to authenticate requests (API Key)
+# You can find it on
 # https://www.yelp.com/developers/v3/manage_app
-CLIENT_ID = None
-CLIENT_SECRET = None
+API_KEY= None 
 
 
 # API constants, you shouldn't have to change these.
 API_HOST = 'https://api.yelp.com'
 SEARCH_PATH = '/v3/businesses/search'
 BUSINESS_PATH = '/v3/businesses/'  # Business ID will come after slash.
-TOKEN_PATH = '/oauth2/token'
-GRANT_TYPE = 'client_credentials'
 
 
 # Defaults for our simple example.
@@ -61,43 +60,13 @@ DEFAULT_LOCATION = 'San Francisco, CA'
 SEARCH_LIMIT = 3
 
 
-def obtain_bearer_token(host, path):
-    """Given a bearer token, send a GET request to the API.
+def request(host, path, api_key, url_params=None):
+    """Given your API_KEY, send a GET request to the API.
 
     Args:
         host (str): The domain host of the API.
         path (str): The path of the API after the domain.
-        url_params (dict): An optional set of query parameters in the request.
-
-    Returns:
-        str: OAuth bearer token, obtained using client_id and client_secret.
-
-    Raises:
-        HTTPError: An error occurs from the HTTP request.
-    """
-    url = '{0}{1}'.format(host, quote(path.encode('utf8')))
-    assert CLIENT_ID, "Please supply your client_id."
-    assert CLIENT_SECRET, "Please supply your client_secret."
-    data = urlencode({
-        'client_id': CLIENT_ID,
-        'client_secret': CLIENT_SECRET,
-        'grant_type': GRANT_TYPE,
-    })
-    headers = {
-        'content-type': 'application/x-www-form-urlencoded',
-    }
-    response = requests.request('POST', url, data=data, headers=headers)
-    bearer_token = response.json()['access_token']
-    return bearer_token
-
-
-def request(host, path, bearer_token, url_params=None):
-    """Given a bearer token, send a GET request to the API.
-
-    Args:
-        host (str): The domain host of the API.
-        path (str): The path of the API after the domain.
-        bearer_token (str): OAuth bearer token, obtained using client_id and client_secret.
+        API_KEY (str): Your API Key.
         url_params (dict): An optional set of query parameters in the request.
 
     Returns:
@@ -109,7 +78,7 @@ def request(host, path, bearer_token, url_params=None):
     url_params = url_params or {}
     url = '{0}{1}'.format(host, quote(path.encode('utf8')))
     headers = {
-        'Authorization': 'Bearer %s' % bearer_token,
+        'Authorization': 'Bearer %s' % api_key,
     }
 
     print(u'Querying {0} ...'.format(url))
@@ -119,7 +88,7 @@ def request(host, path, bearer_token, url_params=None):
     return response.json()
 
 
-def search(bearer_token, term, location):
+def search(api_key, term, location):
     """Query the Search API by a search term and location.
 
     Args:
@@ -135,10 +104,10 @@ def search(bearer_token, term, location):
         'location': location.replace(' ', '+'),
         'limit': SEARCH_LIMIT
     }
-    return request(API_HOST, SEARCH_PATH, bearer_token, url_params=url_params)
+    return request(API_HOST, SEARCH_PATH, api_key, url_params=url_params)
 
 
-def get_business(bearer_token, business_id):
+def get_business(api_key, business_id):
     """Query the Business API by a business ID.
 
     Args:
@@ -149,7 +118,7 @@ def get_business(bearer_token, business_id):
     """
     business_path = BUSINESS_PATH + business_id
 
-    return request(API_HOST, business_path, bearer_token)
+    return request(API_HOST, business_path, api_key)
 
 
 def query_api(term, location):
@@ -159,9 +128,7 @@ def query_api(term, location):
         term (str): The search term to query.
         location (str): The location of the business to query.
     """
-    bearer_token = obtain_bearer_token(API_HOST, TOKEN_PATH)
-
-    response = search(bearer_token, term, location)
+    response = search(API_KEY, term, location)
 
     businesses = response.get('businesses')
 
@@ -174,7 +141,7 @@ def query_api(term, location):
     print(u'{0} businesses found, querying business info ' \
         'for the top result "{1}" ...'.format(
             len(businesses), business_id))
-    response = get_business(bearer_token, business_id)
+    response = get_business(API_KEY, business_id)
 
     print(u'Result for business "{0}" found:'.format(business_id))
     pprint.pprint(response, indent=2)
