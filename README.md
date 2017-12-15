@@ -17,7 +17,7 @@ The API now exposes a search endpoint for businesses that let you order online, 
 
 By default, we’re also providing more business data. The business endpoint will now return hours, pricing, and 3 hi-res photos. A reviews endpoint has been added that’ll provide you with 3 review excerpts for a business from Yelp users.
 
-The new API will use OAuth 2.0 to for all requests as opposed to OAuth 1.0a. We’ve exposed a client credentials flow which will allow for simpler access to the API. Check out the [getting started tutorial](https://www.yelp.com/developers/documentation/v3/get_started) for step-by-step instructions on authenticating with OAuth 2.0.
+The new API will use API Keys for all requests as opposed to OAuth 1.0a, allowing for simpler access to the API. Check out the [getting started tutorial](https://www.yelp.com/developers/documentation/v3/get_started) or the [authentication guide](https://www.yelp.com/developers/documentation/v3/authentication) for step-by-step instructions on authenticating.
 
 We hope that the new Yelp Fusion API has made it more powerful yet simpler for developers to use.
 
