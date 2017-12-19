@@ -22,13 +22,12 @@ Install the dependences:
 $ npm install 
 ```
 
-Open up the `sample.js` file and put your clientId and clientSecret from the [manage app page](https://www.yelp.com/developers/v3/manage_app)
+Open up the `sample.js` file and put your API Key from the [manage app page](https://www.yelp.com/developers/v3/manage_app)
 
 ```javascript
-// Place holders for Yelp Fusion's OAuth 2.0 credentials. Grab them
+// Place holder for Yelp Fusion's API Key. Grab them
 // from https://www.yelp.com/developers/v3/manage_app
-const clientId = '<YOUR_CLIENT_ID>';
-const clientSecret = '<YOUR_CLIENT_SECRET>';
+const apiKey = '<YOUR_API_KEY>';
 ```
 
 You may optionally update the search request
