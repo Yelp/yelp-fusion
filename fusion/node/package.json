@@ -1,6 +1,6 @@
 {
   "name": "sample",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "sample.js",
   "scripts": {
@@ -9,6 +9,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "yelp-fusion": "^1.0.3"
+    "yelp-fusion": "^2.0.2"
   }
 }
