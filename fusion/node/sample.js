@@ -7,8 +7,8 @@ const yelp = require('yelp-fusion');
 const apiKey = '<YOUR_API_KEY>';
 
 const searchRequest = {
-  term:'zoo',
-  location: 'california'
+  term:'Four Barrel Coffee',
+  location: 'san francisco, ca'
 };
 
 const client = yelp.client(apiKey);
