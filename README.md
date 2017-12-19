@@ -17,7 +17,7 @@ The API now exposes a search endpoint for businesses that let you order online, 
 
 By default, we’re also providing more business data. The business endpoint will now return hours, pricing, and 3 hi-res photos. A reviews endpoint has been added that’ll provide you with 3 review excerpts for a business from Yelp users.
 
-The new API will use OAuth 2.0 to for all requests as opposed to OAuth 1.0a. We’ve exposed a client credentials flow which will allow for simpler access to the API. Check out the [getting started tutorial](https://www.yelp.com/developers/documentation/v3/get_started) for step-by-step instructions on authenticating with OAuth 2.0.
+The new API will use API Keys for all requests as opposed to OAuth 1.0a, allowing for simpler access to the API. Check out the [getting started tutorial](https://www.yelp.com/developers/documentation/v3/get_started) or the [authentication guide](https://www.yelp.com/developers/documentation/v3/authentication) for step-by-step instructions on authenticating.
 
 We hope that the new Yelp Fusion API has made it more powerful yet simpler for developers to use.
 
@@ -31,12 +31,21 @@ The official iOS client library is [yelp-ios](https://github.com/Yelp/yelp-ios).
 ### Unofficial
 #### Node.js
 * [tonybadguy/yelp-fusion](https://github.com/tonybadguy/yelp-fusion)
+* [danieljin/yelpv3](https://github.com/danieljin/yelpv3)
+
+#### PHP
+* [stevenmaguire/yelp-php](https://github.com/stevenmaguire/yelp-php)
+
+#### Swift
+* [chrisdhaan/CDYelpFusionKit](https://github.com/chrisdhaan/CDYelpFusionKit)
 
 ## Code samples
 This Github repo includes several small code samples:
 * [Node.js](https://github.com/Yelp/yelp-fusion/tree/master/fusion/node)
+* [PHP](https://github.com/Yelp/yelp-fusion/tree/master/fusion/php)
 * [Python](https://github.com/Yelp/yelp-fusion/tree/master/fusion/python)
 * [Ruby](https://github.com/Yelp/yelp-fusion/tree/master/fusion/ruby)
+* [Swift](https://github.com/Yelp/yelp-fusion/tree/master/fusion/swift)
 
 ## Feedback
 

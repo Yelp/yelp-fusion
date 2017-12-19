@@ -1,4 +1,4 @@
-# Yelp Fusion API Python Code Sample
+# Yelp Fusion API PHP Code Sample
 
 ## Overview
 This program demonstrates the capability of the Yelp Fusion API
@@ -12,11 +12,8 @@ for more details.
 
 ## Steps to run
 
-To install the dependencies, run:
-`pip install -r requirements.txt`.
-
 Run the code sample without specifying any arguments:
-`python sample.py`
+`php sample.php`
 
 Run the code sample by specifying the optional arguments:
-`python sample.py --term="bars" --location="San Francisco, CA"`
+`php sample.php --term="bars" --location="San Francisco, CA"`
