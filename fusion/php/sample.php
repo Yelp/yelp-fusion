@@ -60,7 +60,7 @@ function request($host, $path, $url_params = array()) {
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "authorization: Bearer " . $API_KEY,
+                "authorization: Bearer " . $GLOBALS['API_KEY'],
                 "cache-control: no-cache",
             ),
         ));
