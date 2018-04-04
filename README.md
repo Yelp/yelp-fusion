@@ -1,25 +1,14 @@
 
 # Yelp Fusion
+The Yelp Fusion API provides access to the industry leading Yelp content and data. The [Yelp Fusion Developer Portal](https://www.yelp.com/fusion) includes tools & documentation for building with the Yelp Fusion API, and cool partner integration examples to inspire developers.
 
-[Yelp Fusion](https://www.yelp.com/developers) includes better tools for developers to build with the new Yelp Fusion API, which provides access to the industry leading Yelp content and data, a revamped developer portal, and cool new partner integration examples to inspire developers.
+Our [getting started tutorial](https://www.yelp.com/developers/documentation/v3/get_started) provides step-by-step instructions to get up and running with the Yelp Fusion API.
 
-Our [getting started tutorial](https://www.yelp.com/developers/documentation/v3/get_started) provides step-by-step instructions to get up and running with the new Yelp Fusion API.
+## Keep up-to-date on the latest API improvements & changes
 
-## What’s new?
+We are continually working to improve the Yelp Fusion API. To stay up-to-date on development on the API, i.e. new features, bugfixes and changes, please keep an eye on the [Fusion Changelog](https://www.yelp.com/developers/v3/changelog). 
 
-We’re exposing two new features as part of the developer preview: [autocomplete](https://www.yelp.com/developers/documentation/v3/autocomplete) and [transactions search](https://www.yelp.com/developers/documentation/v3/transactions_search).
-
-As a user performs a search, autocomplete will help them find what they want (some might even say we have the ability to read their minds). With autocomplete, a user’s search experience will feel much more intuitive.
-
-The API now exposes a search endpoint for businesses that let you order online, specifically food delivery. If you’re interested in working with businesses which deliver food to your users, then look no further! Any food delivery business available on Yelp (such as Eat24, ChowNow, delivery.com and EatStreet) will be returned through this endpoint.
-
-## What’s changed?
-
-By default, we’re also providing more business data. The business endpoint will now return hours, pricing, and 3 hi-res photos. A reviews endpoint has been added that’ll provide you with 3 review excerpts for a business from Yelp users.
-
-The new API will use API Keys for all requests as opposed to OAuth 1.0a, allowing for simpler access to the API. Check out the [getting started tutorial](https://www.yelp.com/developers/documentation/v3/get_started) or the [authentication guide](https://www.yelp.com/developers/documentation/v3/authentication) for step-by-step instructions on authenticating.
-
-We hope that the new Yelp Fusion API has made it more powerful yet simpler for developers to use.
+We also have a [dedicated changelog for our GraphQL API](https://www.yelp.com/developers/graphql/changelog). 
 
 ## Clientlibs
 Client libraries are full-featured interface modules that handle much of the request and response handling for the Yelp Fusion API.
