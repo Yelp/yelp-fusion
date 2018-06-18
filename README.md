@@ -28,8 +28,12 @@ The official iOS client library is [yelp-ios](https://github.com/Yelp/yelp-ios).
 #### Swift
 * [chrisdhaan/CDYelpFusionKit](https://github.com/chrisdhaan/CDYelpFusionKit)
 
+#### Python
+* [gfairchild/yelpapi](https://github.com/gfairchild/yelpapi)
+
 #### R
 * [OmaymaS/yelpr](https://github.com/OmaymaS/yelpr)
+
 
 ## Code samples
 This Github repo includes several small code samples:
