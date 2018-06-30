@@ -19,6 +19,8 @@ $ cd yelp-fusion/fusion/ruby
 Install the dependences:
 
 ```
+$ gem install ruby
+$ gem install bundle 
 $ bundle 
 ```
 
