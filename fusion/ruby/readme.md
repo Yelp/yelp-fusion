@@ -19,16 +19,21 @@ $ cd yelp-fusion/fusion/ruby
 Install the dependences:
 
 ```
-$ bundle 
+$ bundle
 ```
 
 Open up the `sample.rb` file and put your client_id and client_secret from the [manage app page](https://www.yelp.com/developers/v3/manage_app)
 
 ```
-# Place holders for Yelp Fusion's OAuth 2.0 credentials. Grab them
-# from https://www.yelp.com/developers/v3/manage_app
-CLIENT_ID = <YOUR_CLIENT_ID>
-CLIENT_SECRET = <YOUR_CLIENT_SECRET>
+
+# Prior to December 7, 2017 the API used OAuth 2.0 to authenticate requests to the API.
+# In an effort to simplify authentication, starting March 1, 2018 the API no longer uses
+# OAuth 2.0 for requests and moved over to only API Keys.
+```
+```
+# Place holders for Yelp Fusion's API_KEY.
+# Grab them from https://www.yelp.com/developers/v3/manage_app
+API_KEY = <YOUR_API_KEY>
 ```
 
 ## Usage
