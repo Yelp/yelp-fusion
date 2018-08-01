@@ -5,7 +5,7 @@ require "optparse"
 
 # Place holders for Yelp Fusion's API key. Grab it
 # from https://www.yelp.com/developers/v3/manage_app
-API_KEY = None
+API_KEY = "dh_vL9z02WZ8BBN0q7aMX74FfLsI8P64Sc6JP0S07IabZuLHb0tkpT8dNDIdE5QUpsLlMJJLEoGZl7JybFgpr4RWNICpyCej23hozmeVnkutjOBVdwBbYKkBTY9gW3Yx"
 
 
 # Constants, do not change these
@@ -62,11 +62,11 @@ end
 
 # Look up a business by a given business id. Full documentation is online at:
 # https://www.yelp.com/developers/documentation/v3/business
-# 
+#
 # business_id - a string business id
 #
 # Examples
-# 
+#
 #   business("yelp-san-francisco")
 #   # => {
 #          "name": "Yelp",
