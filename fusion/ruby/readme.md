@@ -69,7 +69,7 @@ $ ruby sample.rb search --term=parks --location="London"
 
 ### Lookup
 
-Lookup takes only one paramter, `--business-id`. This is the unique business id you either from the search API response or from a business page on Yelp. The id can be pulled from a Yelp biz url: `https://yelp.com/biz/<the-yelp-biz-id>`
+Lookup takes only one parameter, `--business-id`. This is the unique business id you get either from the search API response or from a business page on Yelp. The id can be pulled from a Yelp biz url: `https://yelp.com/biz/<the-yelp-biz-id>`
 
 Examples:
 
