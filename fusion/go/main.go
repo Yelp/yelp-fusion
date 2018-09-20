@@ -18,7 +18,7 @@ const APIKey = ""
 const (
 	APIHost      = "api.yelp.com"
 	SearchPath   = "/v3/businesses/search"
-	BusinessPath = "/v3/businesses" // trailing / because we append the business id to the path
+	BusinessPath = "/v3/businesses"
 )
 
 // Default values - changeable.
