@@ -46,8 +46,8 @@ $ ruby sample.rb command [options]
 
 There are two commands:
 
-1. `search` - uses the Fusion [search endpoint](https://www.yelp.com/developers/documentation/v3/business_search) to perform a Yelp search
-2. `lookup` - uses the Fusion [business endpoint](https://www.yelp.com/developers/documentation/v3/business) to look up a business based on its business id.
+1. `search` - uses the Fusion [search endpoint](https://docs.developer.yelp.com/reference/v3_business_search) to perform a Yelp search
+2. `lookup` - uses the Fusion [business endpoint](https://docs.developer.yelp.com/reference/v3_business_info) to look up a business based on its business id.
 
 ### Search
 

@@ -5,13 +5,13 @@
  * Yelp Fusion API code sample.
  *
  * This program demonstrates the capability of the Yelp Fusion API
- * by using the Business Search API to query for businesses by a 
- * search term and location, and the Business API to query additional 
+ * by using the Business Search API to query for businesses by a
+ * search term and location, and the Business API to query additional
  * information about the top result from the search query.
- * 
- * Please refer to http://www.yelp.com/developers/v3/documentation 
+ *
+ * Please refer to https://docs.developer.yelp.com/docs/get-started
  * for the API documentation.
- * 
+ *
  * Sample usage of the program:
  * `php sample.php --term="dinner" --location="San Francisco, CA"`
  */
@@ -35,13 +35,13 @@ $DEFAULT_LOCATION = "San Francisco, CA";
 $SEARCH_LIMIT = 3;
 
 
-/** 
+/**
  * Makes a request to the Yelp API and returns the response
- * 
- * @param    $host    The domain host of the API 
+ *
+ * @param    $host    The domain host of the API
  * @param    $path    The path of the API after the domain.
  * @param    $url_params    Array of query-string parameters.
- * @return   The JSON response from the request      
+ * @return   The JSON response from the request
  */
 function request($host, $path, $url_params = array()) {
     // Send Yelp API Call
@@ -85,65 +85,65 @@ function request($host, $path, $url_params = array()) {
 }
 
 /**
- * Query the Search API by a search term and location 
- * 
- * @param    $term        The search term passed to the API 
- * @param    $location    The search location passed to the API 
- * @return   The JSON response from the request 
+ * Query the Search API by a search term and location
+ *
+ * @param    $term        The search term passed to the API
+ * @param    $location    The search location passed to the API
+ * @return   The JSON response from the request
  */
 function search($term, $location) {
     $url_params = array();
-    
+
     $url_params['term'] = $term;
     $url_params['location'] = $location;
     $url_params['limit'] = $GLOBALS['SEARCH_LIMIT'];
-    
+
     return request($GLOBALS['API_HOST'], $GLOBALS['SEARCH_PATH'], $url_params);
 }
 
 /**
  * Query the Business API by business_id
- * 
+ *
  * @param    $business_id    The ID of the business to query
- * @return   The JSON response from the request 
+ * @return   The JSON response from the request
  */
 function get_business($business_id) {
     $business_path = $GLOBALS['BUSINESS_PATH'] . urlencode($business_id);
-    
+
     return request($GLOBALS['API_HOST'], $business_path);
 }
 
 /**
- * Queries the API by the input values from the user 
- * 
+ * Queries the API by the input values from the user
+ *
  * @param    $term        The search term to query
  * @param    $location    The location of the business to query
  */
-function query_api($term, $location) {     
+function query_api($term, $location) {
     $response = json_decode(search($term, $location));
     $business_id = $response->businesses[0]->id;
-    
+
     print sprintf(
-        "%d businesses found, querying business info for the top result \"%s\"\n\n",         
+        "%d businesses found, querying business info for the top result \"%s\"\n\n",
         count($response->businesses),
         $business_id
     );
-    
+
     $response = get_business($business_id);
-    
+
     print sprintf("Result for business \"%s\" found:\n", $business_id);
     $pretty_response = json_encode(json_decode($response), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     print "$pretty_response\n";
 }
 
 /**
- * User input is handled here 
+ * User input is handled here
  */
 $longopts  = array(
     "term::",
     "location::",
 );
-    
+
 $options = getopt("", $longopts);
 
 $term = $options['term'] ?: $GLOBALS['DEFAULT_TERM'];

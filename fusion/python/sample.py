@@ -7,7 +7,7 @@ by using the Search API to query for businesses by a search term and location,
 and the Business API to query additional information about the top result
 from the search query.
 
-Please refer to http://www.yelp.com/developers/v3/documentation for the API
+Please refer to https://docs.developer.yelp.com/docs/get-started for the API
 documentation.
 
 This program requires the Python requests library, which you can install via:
@@ -45,7 +45,7 @@ except ImportError:
 # It now uses private keys to authenticate requests (API Key)
 # You can find it on
 # https://www.yelp.com/developers/v3/manage_app
-API_KEY= None 
+API_KEY= None
 
 
 # API constants, you shouldn't have to change these.
