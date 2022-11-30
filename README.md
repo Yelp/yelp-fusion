@@ -2,7 +2,7 @@
 # Yelp Fusion
 The Yelp Fusion API provides access to the industry leading Yelp content and data. The [Yelp Fusion Developer Portal](https://fusion.yelp.com/) includes tools & documentation for building with the Yelp Fusion API, and cool partner integration examples to inspire developers.
 
-Our [getting started tutorial](https://docs.developer.yelp.com/docs/get-started) provides step-by-step instructions to get up and running with the Yelp Fusion API.
+Our [getting started tutorial](https://docs.developer.yelp.com/docs/fusion-intro) provides step-by-step instructions to get up and running with the Yelp Fusion API.
 
 ## Keep up-to-date on the latest API improvements & changes
 
