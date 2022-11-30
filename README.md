@@ -1,14 +1,12 @@
 
 # Yelp Fusion
-The Yelp Fusion API provides access to the industry leading Yelp content and data. The [Yelp Fusion Developer Portal](https://www.yelp.com/fusion) includes tools & documentation for building with the Yelp Fusion API, and cool partner integration examples to inspire developers.
+The Yelp Fusion API provides access to the industry leading Yelp content and data. The [Yelp Fusion Developer Portal](https://fusion.yelp.com/) includes tools & documentation for building with the Yelp Fusion API, and cool partner integration examples to inspire developers.
 
-Our [getting started tutorial](https://www.yelp.com/developers/documentation/v3/get_started) provides step-by-step instructions to get up and running with the Yelp Fusion API.
+Our [getting started tutorial](https://docs.developer.yelp.com/docs/fusion-intro) provides step-by-step instructions to get up and running with the Yelp Fusion API.
 
 ## Keep up-to-date on the latest API improvements & changes
 
-We are continually working to improve the Yelp Fusion API. To stay up-to-date on development on the API, i.e. new features, bugfixes and changes, please keep an eye on the [Fusion Changelog](https://www.yelp.com/developers/v3/changelog). 
-
-We also have a [dedicated changelog for our GraphQL API](https://www.yelp.com/developers/graphql/changelog). 
+We are continually working to improve the Yelp Fusion API. To stay up-to-date on development on the API, i.e. new features, bugfixes and changes, please keep an eye on the [Fusion Changelog](https://docs.developer.yelp.com/changelog).
 
 ## Clientlibs
 Client libraries are full-featured interface modules that handle much of the request and response handling for the Yelp Fusion API.

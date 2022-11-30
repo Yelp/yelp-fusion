@@ -6,7 +6,7 @@ by using the Search API to query for businesses by a search term and location,
 and the Business API to query additional information about the top result
 from the search query.
 
-Please refer to [API documentation](https://www.yelp.com/developers/documentation/v3)
+Please refer to [API documentation](https://docs.developer.yelp.com/docs/fusion-intro)
 for more details.
 
 

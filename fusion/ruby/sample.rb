@@ -21,7 +21,7 @@ SEARCH_LIMIT = 5
 
 
 # Make a request to the Fusion search endpoint. Full documentation is online at:
-# https://www.yelp.com/developers/documentation/v3/business_search
+# https://docs.developer.yelp.com/reference/v3_business_search
 #
 # term - search term used to find businesses
 # location - what geographic location the search should happen
@@ -61,12 +61,12 @@ end
 
 
 # Look up a business by a given business id. Full documentation is online at:
-# https://www.yelp.com/developers/documentation/v3/business
-# 
+# https://docs.developer.yelp.com/reference/v3_business_info
+#
 # business_id - a string business id
 #
 # Examples
-# 
+#
 #   business("yelp-san-francisco")
 #   # => {
 #          "name": "Yelp",
