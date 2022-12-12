@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "io.github.stewseo:yelp-fusion-client:1.0.52"
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
