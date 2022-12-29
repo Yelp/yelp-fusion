@@ -3,13 +3,13 @@
  */
 package io.github.stewseo.examples;
 
-import io.github.stewseo.yelp.fusion.client.yelpfusion.YelpFusionClient;
-import io.github.stewseo.yelp.fusion.client.yelpfusion.business.Business;
-import io.github.stewseo.yelp.fusion.client.yelpfusion.business.details.BusinessDetailsResponse;
-import io.github.stewseo.yelp.fusion.client.yelpfusion.business.search.SearchBusiness;
-import io.github.stewseo.yelp.fusion.client.yelpfusion.business.search.SearchBusinessResponse;
-import io.github.stewseo.yelp.fusion.client.yelpfusion.categories.Categories;
-import io.github.stewseo.yelp.fusion.client.yelpfusion.misc.AutoCompleteResponse;
+import io.github.stewseo.client.yelpfusion.YelpFusionSyncBlockingClient;
+import io.github.stewseo.client.yelpfusion.business.Business;
+import io.github.stewseo.client.yelpfusion.business.details.BusinessDetailsResponse;
+import io.github.stewseo.client.yelpfusion.business.search.SearchBusiness;
+import io.github.stewseo.client.yelpfusion.business.search.SearchBusinessResponse;
+import io.github.stewseo.client.yelpfusion.categories.Category;
+import io.github.stewseo.client.yelpfusion.misc.AutoCompleteResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +17,10 @@ import java.util.List;
 public class Example {
 
     public static void main(String[] args) throws Exception {
+
         String apiKey = System.getenv("YELP_API_KEY");
 
-        YelpFusionClient yelpClient = YelpFusionClient.createClient(apiKey);
+        YelpFusionSyncBlockingClient yelpClient = YelpFusionSyncBlockingClient.createClient(apiKey);
 
         // Autocomplete
         AutoCompleteResponse response = yelpClient.autocomplete(a -> a.text("sush"));
@@ -30,7 +31,7 @@ public class Example {
         String resultAlias = response.categories().get(0).alias();
 
         // CategoriesAlias
-        Categories category = yelpClient.categories().alias(a -> a
+        Category category = yelpClient.categories().alias(a -> a
                         .alias(resultAlias)
                 )
                 .category();
@@ -59,7 +60,7 @@ public class Example {
             String id = business.id();
             // Business Details
             BusinessDetailsResponse busDetailsResp = yelpClient.businesses().businessDetails(s -> s.id(id));
-            businesses.add(busDetailsResp.result().get(0));
+            businesses.add(busDetailsResp.result());
         }
 
         System.out.println("number of businesses: " + businesses.size());

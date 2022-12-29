@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    implementation "io.github.stewseo:yelp-fusion-client:1.0.63"
+    implementation "io.github.stewseo:yelp-fusion-client:1.0.7"
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
 }
 

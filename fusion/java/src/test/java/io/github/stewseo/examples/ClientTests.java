@@ -1,19 +1,25 @@
 package io.github.stewseo.examples;
 
+import com.brein.domain.results.BreinTemporalDataResult;
+import com.brein.domain.results.temporaldataparts.BreinLocationResult;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import io.github.stewseo.client.json.jackson.JacksonJsonpMapper;
+import io.github.stewseo.client.transport.YelpFusionTransport;
+import io.github.stewseo.client.transport.restclient.YelpRestClientTransport;
+import io.github.stewseo.client.yelpfusion.YelpFusionAsyncClient;
+import io.github.stewseo.client.yelpfusion.YelpFusionSyncBlockingClient;
+import io.github.stewseo.client.yelpfusion.business.search.SearchBusinessResponse;
+import io.github.stewseo.client.yelpfusion.events.Event;
+import io.github.stewseo.client.yelpfusion.events.EventSearchRequest;
+import io.github.stewseo.client.yelpfusion.events.EventSearchResponse;
 import io.github.stewseo.lowlevel.restclient.RestClient;
-import io.github.stewseo.yelp.fusion.client.json.jackson.JacksonJsonpMapper;
-import io.github.stewseo.yelp.fusion.client.transport.YelpFusionTransport;
-import io.github.stewseo.yelp.fusion.client.transport.restclient.YelpRestClientTransport;
-import io.github.stewseo.yelp.fusion.client.yelpfusion.YelpFusionAsyncClient;
-import io.github.stewseo.yelp.fusion.client.yelpfusion.YelpFusionClient;
-import io.github.stewseo.yelp.fusion.client.yelpfusion.business.search.SearchBusinessResponse;
 import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.apache.http.message.BasicHeader;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -34,7 +40,7 @@ public class ClientTests {
         YelpFusionTransport transport = new YelpRestClientTransport(restClient, mapper);
 
         // Create the yelp fusion client
-        YelpFusionClient client = new YelpFusionClient(transport);
+        YelpFusionSyncBlockingClient client = new YelpFusionSyncBlockingClient(transport);
 
         // Build a Business Search Request
     }
@@ -43,7 +49,7 @@ public class ClientTests {
     public void createYelpFusionClientTest() throws Exception {
 
         // Create a synchronized blocking yelp fusion client and build a Business Search Request
-        SearchBusinessResponse response = YelpFusionClient.createClient(System.getenv("YELP_API_KEY")).businesses().businessSearch(s -> s
+        SearchBusinessResponse response = YelpFusionSyncBlockingClient.createClient(System.getenv("YELP_API_KEY")).businesses().businessSearch(s -> s
                 .location("nyc")
                 .term("restaurants")
                 .categories(cat -> cat
@@ -67,6 +73,5 @@ public class ClientTests {
                 .limit(50)
                 .offset(0)
                 .sort_by("review_count"), ObjectNode.class);
-
     }
 }
