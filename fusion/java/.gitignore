@@ -1,0 +1,27 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+# Ignore Gradle build output directory
+build
+build/build
+*/build/
+
+gradle/
+gradlew*
+*.gradlew
+*.jar
+*.bat
+*.txt
+
+.classpath
+.project
+.settings/
+
+*-cs-cleanup.xml
+*-cs-formatter.xml
+.checkstyle
+.idea/
+*.iml
+*.ipr
+*.iws
+*.gpg
+*.pub
