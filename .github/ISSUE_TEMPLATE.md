@@ -1,14 +1,17 @@
+**Note:** _Do not post any API keys or secrets or they will be rotated_
+<br><hr>
+
 ## Overview
-- **Client ID:** _(e.g. lrVVpyP-aBRmP1I1KUqXkw)_
+- **Client ID:** _(e.g. lrVPrnyP-aBRmP1Og23E)_
 - **Issue type:** _(eg. feature request, bug, question, etc)_
 - **Summary:** _(A few sentences describing the issue and what you're trying to do)_
 - **Platform:** _(Desktop/web, Android, iOS, etc)_
 
 ## Description
-_(More detailed information explaining the problem, the expected results, the question, etc.)_
+_(More detailed information explaining the problem, the expected results, the question, etc. Do not post any API keys or secrets.)_
 
 ## More information
-_(Fill this section out if applicable (for things like bugs or questions))_
+_(Fill this section out if applicable (for things like bugs or questions. Do not post any API keys or secrets.))_
 
 ### Endpoint
 _(e.g. Fusion Search API)_
@@ -38,4 +41,4 @@ _(SAMPLE PLEASE REMOVE)_
 ```
 
 ## Extra information
-_(Anything else you that you think might help us better resolve this)_
+_(Anything else you that you think might help us better resolve this. Do not post any API keys or secrets.)_
