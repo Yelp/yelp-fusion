@@ -24,7 +24,7 @@ The official iOS client library is [yelp-ios](https://github.com/Yelp/yelp-ios).
 * [stevenmaguire/yelp-php](https://github.com/stevenmaguire/yelp-php)
 
 #### Python
-* [gfairchild/yelpapi](https://github.com/gfairchild/yelpapi)
+* [lanl/yelpapi](https://github.com/lanl/yelpapi)
 
 #### R
 * [OmaymaS/yelpr](https://github.com/OmaymaS/yelpr)
